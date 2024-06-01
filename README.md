@@ -1,6 +1,3 @@
-Sure! Here is the entire text in `.md` format:
-
-```markdown
 # Flutter Firebase Authentication
 
 A Flutter application demonstrating Firebase Authentication with various methods including Google Sign-In, Email and Password Sign-In, and Anonymous Sign-In.
@@ -120,7 +117,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For any questions or feedback, please contact ushantharuka2222@gmail.com.
-```
-
-Save this content into a file named `README.md` in your project directory. This file provides detailed information about your Flutter Firebase Authentication application, including setup instructions, project structure, and usage guidelines. Be sure to replace placeholders with your actual details, such as repository link and contact email.
+For any questions or feedback, please contact ushantharuka2222@gmail.com
