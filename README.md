@@ -1,4 +1,4 @@
-# Flutter Firebase Authentication
+# Flutter Firebase Authentication 2024
 
 A Flutter application demonstrating Firebase Authentication with various methods including Google Sign-In, Email and Password Sign-In, and Anonymous Sign-In.
 
