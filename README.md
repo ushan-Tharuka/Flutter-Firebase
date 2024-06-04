@@ -15,6 +15,8 @@ A Flutter application demonstrating Firebase Authentication with various methods
 
 ![Login Screen](screenshots/login.png)
 ![Register Screen](screenshots/register.png)
+![register](https://github.com/ushan-Tharuka/Flutter-firebase/assets/74971901/c3077b31-b298-4a60-9a58-77a5d9a5e004)
+
 ![Home Screen](screenshots/home.png)
 
 ## Getting Started
