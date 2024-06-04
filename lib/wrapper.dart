@@ -1,3 +1,5 @@
+import 'package:firebase/authentication/authentication.dart';
+import 'package:firebase/authentication/register.dart';
 import 'package:firebase/authentication/sign_in.dart';
 import 'package:firebase/home/home.dart';
 import 'package:firebase/models/UserModel.dart';
@@ -14,7 +16,7 @@ class Wrapper extends StatelessWidget {
     final user = Provider.of<UserModel?>(context);
 
     if (user == null) {
-      return const SignInPage();
+      return const Authenticate();
     } else {
       return Home();
     }

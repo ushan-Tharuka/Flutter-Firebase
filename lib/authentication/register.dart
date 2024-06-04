@@ -4,14 +4,14 @@ import 'package:firebase/constants/description.dart';
 import 'package:firebase/constants/styles.dart';
 import 'package:flutter/material.dart';
 
-class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+class Register extends StatefulWidget {
+  const Register({super.key});
 
   @override
-  State<SignInPage> createState() => _SignInPageState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _SignInPageState extends State<SignInPage> {
+class _RegisterState extends State<Register> {
   //create object for AuthServices class auth reference
   final AuthServices _auth = AuthServices();
 
@@ -26,7 +26,7 @@ class _SignInPageState extends State<SignInPage> {
         backgroundColor: bgBlack,
         appBar: AppBar(
           title: const Text(
-            "Sign In",
+            "Register",
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: bgBlack,
@@ -113,7 +113,7 @@ class _SignInPageState extends State<SignInPage> {
                               //go to register page
                               onTap: () {},
                               child: const Text(
-                                "REGISTER",
+                                "LOG IN",
                                 style: TextStyle(
                                     color: mainBlue,
                                     fontWeight: FontWeight.w600),
@@ -138,7 +138,7 @@ class _SignInPageState extends State<SignInPage> {
                                     Border.all(width: 2, color: mainYellow)),
                             child: const Center(
                               child: Text(
-                                "LOG IN",
+                                "REGISTER",
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w500),
@@ -146,30 +146,7 @@ class _SignInPageState extends State<SignInPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        GestureDetector(
-                          //method for login user
-                          onTap: () {},
-                          child: Container(
-                            height: 40,
-                            width: 200,
-                            decoration: BoxDecoration(
-                                color: bgBlack,
-                                borderRadius: BorderRadius.circular(100),
-                                border:
-                                    Border.all(width: 2, color: mainYellow)),
-                            child: const Center(
-                              child: Text(
-                                "LOG AS GUEST",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            ),
-                          ),
-                        ),
+
                         //anon
                       ],
                     ))
@@ -179,17 +156,3 @@ class _SignInPageState extends State<SignInPage> {
         ));
   }
 }
-
-// ElevatedButton(
-//           child: const Text("Sign in Anonymously"),
-//           onPressed: () async {
-//             // when click aign ano button
-//             dynamic anoresult = await _auth.signInAnonymously();
-//             if (anoresult == Null) {
-//               print("Error in sign in anon");
-//             } else {
-//               print("Signed in anon");
-//               print("User ID: ${anoresult.uid}");
-//             }
-//           },
-//         ),
