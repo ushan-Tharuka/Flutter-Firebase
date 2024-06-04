@@ -22,6 +22,7 @@ class _RegisterState extends State<Register> {
   //email password status
   String email = "";
   String password = "";
+  String error = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +61,7 @@ class _RegisterState extends State<Register> {
                           ),
                           //email
                           TextFormField(
+                            style: TextStyle(color: Colors.white),
                             decoration: textInputDecoration,
                             validator: (val) => val?.isEmpty == true
                                 ? "Enter a valid email"
@@ -73,6 +75,8 @@ class _RegisterState extends State<Register> {
                           const SizedBox(height: 20),
                           //password
                           TextFormField(
+                            obscureText: true,
+                            style: TextStyle(color: Colors.white),
                             decoration: textInputDecoration.copyWith(
                                 hintText: "password"),
                             validator: (val) => val!.length < 6
@@ -85,8 +89,11 @@ class _RegisterState extends State<Register> {
                             },
                           ),
                           //google
-                          const SizedBox(
-                            height: 20,
+                          const SizedBox(height: 20),
+                          //error text
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red),
                           ),
                           const Text(
                             "Loging with social accounts",
@@ -140,7 +147,16 @@ class _RegisterState extends State<Register> {
                           ),
                           GestureDetector(
                             //method for login user
-                            onTap: () {},
+                            onTap: () async {
+                              dynamic result =
+                                  await _auth.registerWithEmailAndPassword(
+                                      email, password);
+                              if (result == null) {
+                                setState(() {
+                                  error = "Please enter a valid email!";
+                                });
+                              }
+                            },
                             child: Container(
                               height: 40,
                               width: 200,

@@ -22,6 +22,7 @@ class _SignInPageState extends State<SignInPage> {
   //email password status
   String email = "";
   String password = "";
+  String error = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,6 +58,7 @@ class _SignInPageState extends State<SignInPage> {
                         children: [
                           //email
                           TextFormField(
+                            style: TextStyle(color: Colors.white),
                             decoration: textInputDecoration,
                             validator: (val) => val?.isEmpty == true
                                 ? "Enter a valid email"
@@ -72,6 +74,8 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                           //password
                           TextFormField(
+                            obscureText: true,
+                            style: TextStyle(color: Colors.white),
                             decoration: textInputDecoration.copyWith(
                                 hintText: "password"),
                             validator: (val) => val!.length < 6
@@ -82,6 +86,10 @@ class _SignInPageState extends State<SignInPage> {
                                 password = val;
                               });
                             },
+                          ),
+                          Text(
+                            error,
+                            style: TextStyle(color: Colors.red),
                           ),
                           //google
                           const SizedBox(
@@ -139,7 +147,16 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                           GestureDetector(
                             //method for login user
-                            onTap: () {},
+                            onTap: () async{
+                              dynamic result = await _auth
+                                  .signInUsingemailAndPassword(email, password);
+                              if (result == null) {
+                                setState(() {
+                                  error =
+                                      "could not sihn in with those credintials";
+                                });
+                              }
+                            },
                             child: Container(
                               height: 40,
                               width: 200,
@@ -163,21 +180,43 @@ class _SignInPageState extends State<SignInPage> {
                           ),
                           GestureDetector(
                             //method for login user
-                            onTap: () {},
-                            child: Container(
-                              height: 40,
-                              width: 200,
-                              decoration: BoxDecoration(
-                                  color: bgBlack,
-                                  borderRadius: BorderRadius.circular(100),
-                                  border:
-                                      Border.all(width: 2, color: mainYellow)),
-                              child: const Center(
-                                child: Text(
-                                  "LOG AS GUEST",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w500),
+                            onTap: () async {
+                              dynamic result = await _auth
+                                  .signInUsingemailAndPassword(email, password);
+                              if (result == null) {
+                                setState(() {
+                                  error =
+                                      "could not sihn in with those credintials";
+                                });
+                              }
+                            },
+                            child: GestureDetector(
+                              onTap: () async {
+                                // when click aign ano button
+                                dynamic anoresult =
+                                    await _auth.signInAnonymously();
+                                if (anoresult == Null) {
+                                  print("Error in sign in anon");
+                                } else {
+                                  print("Signed in anon");
+                                  print("User ID: ${anoresult.uid}");
+                                }
+                              },
+                              child: Container(
+                                height: 40,
+                                width: 200,
+                                decoration: BoxDecoration(
+                                    color: bgBlack,
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                        width: 2, color: mainYellow)),
+                                child: const Center(
+                                  child: Text(
+                                    "LOG AS GUEST",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ),
