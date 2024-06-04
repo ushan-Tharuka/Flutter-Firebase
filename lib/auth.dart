@@ -26,4 +26,19 @@ class AuthServices {
       return null;
     }
   }
+
+
+//register usign email and password
+//signin usign email and password
+//signin using gmail
+//signout
+Future signOut() async {
+  try {
+    return await _auth.signOut();
+  } catch (err) {
+    print(err.toString());
+    return null;
+  }
+}
+
 }
