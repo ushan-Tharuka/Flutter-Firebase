@@ -5,7 +5,9 @@ import 'package:firebase/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 class SignInPage extends StatefulWidget {
-  const SignInPage({super.key});
+  //function
+  final Function toggle;
+  const SignInPage({Key? key, required this.toggle}) : super(key: key);
 
   @override
   State<SignInPage> createState() => _SignInPageState();
@@ -119,7 +121,9 @@ class _SignInPageState extends State<SignInPage> {
                               ),
                               GestureDetector(
                                 //go to register page
-                                onTap: () {},
+                                onTap: () {
+                                  widget.toggle();
+                                },
                                 child: const Text(
                                   "REGISTER",
                                   style: TextStyle(

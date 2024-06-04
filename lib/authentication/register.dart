@@ -5,7 +5,9 @@ import 'package:firebase/constants/styles.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
-  const Register({super.key});
+  //function
+  final Function toggle;
+  const Register({Key? key, required this.toggle}) : super(key: key);
 
   @override
   State<Register> createState() => _RegisterState();
@@ -106,7 +108,7 @@ class _RegisterState extends State<Register> {
                           const SizedBox(
                             height: 10,
                           ),
-                  
+
                           //register
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +122,9 @@ class _RegisterState extends State<Register> {
                               ),
                               GestureDetector(
                                 //go to register page
-                                onTap: () {},
+                                onTap: () {
+                                  widget.toggle();
+                                },
                                 child: const Text(
                                   "LOG IN",
                                   style: TextStyle(
@@ -155,7 +159,7 @@ class _RegisterState extends State<Register> {
                               ),
                             ),
                           ),
-                  
+
                           //anon
                         ],
                       )),
